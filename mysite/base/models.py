@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Categories(models.Models):
+class Categories(models.Model):
     name = models.CharField(unique=True, max_length=50, db_index=True)
     position = models.SmallIntegerField(unique=True)
     is_visible = models.BooleanField(default=True)
