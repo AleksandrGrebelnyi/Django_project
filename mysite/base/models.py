@@ -18,6 +18,8 @@ class Dish(models.Model):
     description = models.TextField('Description')
     position = models.SmallIntegerField(unique=True)
     price = models.FloatField('Price')
+    photo = models.ImageField(width_field=50, height_field=50)
+    specialty = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.name}'
