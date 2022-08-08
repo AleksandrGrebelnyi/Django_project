@@ -1,0 +1,21 @@
+<!-- ======= About Section ======= -->
+{% load static %}
+    <section id="about" class="about">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-5 ">
+            <img src={% static "assets/img/about.jpg" %} width="650px" height="450px">
+          </div>
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch">
+            <div class="content">
+                <h3>Мы попадаем прямо в сердце &#129505<br><strong>Вы точно захотите вернуться</strong></h3>
+              <ul><br>
+                  {% for about in about_us %}
+                      <h5>{{ about.info_about_us | linenumbers | linebreaksbr }}</h5>
+                  {% endfor %}
+            </div>
+        </div>
+      </div>
+      </div>
+</section>
+<!-- End About Section -->

@@ -1,0 +1,18 @@
+<section id="gallery" class="gallery">
+<div class="section-title">
+      <h2>Some photos from <span>Our Restaurant</span></h2>
+      <p>Become a part of our happy moments<br>Стань частью наших счастливых моментов</p>
+    </div>
+  <span class="container-fluid">
+      {% for image in gallery %}
+                <span class="gallery-item">
+                  <a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox">
+                    <img src="media/{{ image.photo }}" alt="" class="img-fluid" width="200px">
+                  </a>
+                </span>
+      {% endfor %}
+    </div>
+
+  </span>
+</section>
+<!-- End Gallery Section -->

@@ -1,0 +1,46 @@
+<!-- ======= Whu Us Section ======= -->
+<section id="why-us" class="why-us">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Почему выбирают <span>Our Restaurant</span></h2>
+      <p>Вот за что нас любят</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-4">
+        <div class="box">
+          <span>01</span>
+          <h4>Лучшие повора мира</h4>
+            {% for value in descriptions %}
+                  <p>{{ value.description }}</p>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="box">
+          <span>02</span>
+          <h4>Следим за качеством продуктов</h4>
+            {% for value in descriptions2 %}
+                  <p>{{ value.description }}</p>
+            {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <div class="box">
+          <span>03</span>
+          <h4>Со-основатель ресторана Nurset </h4>
+            {% for value in descriptions3 %}
+                  <p>{{ value.description }}</p>
+            {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- End Whu Us Section -->

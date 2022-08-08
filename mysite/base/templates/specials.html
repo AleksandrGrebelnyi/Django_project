@@ -1,0 +1,84 @@
+<section id="specials" class="specials">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Попробуй наши <span>Specials</span></h2>
+          <p>Индивидуально от шефа</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+            {% for value in spes_propositions %}
+                      <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">{{ value.name }}</a>
+                      </li>
+                {% endfor %}
+            {% for value in spes_propositions2 %}
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">{{ value.name }}</a>
+                  </li>
+            {% endfor %}
+            {% for value in spes_propositions3 %}
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-3">{{ value.name }}</a>
+                  </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                {% for value in spes_propositions %}
+                      <h3>{{ value.description }}</h3>
+                {% endfor %}
+                      <p class="fst-italic">Fresh and delicious</p>
+                    <p>Very tasty</p>
+                  </div>
+                {% for value in spes_propositions %}
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="media/{{ value.photo }}" alt="" class="img-fluid">
+                  </div>
+                {% endfor %}
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                      {% for value in spes_propositions2 %}
+                            <h3>{{ value.description }}</h3>
+                      {% endfor %}
+                    <p class="fst-italic">You will lick you fingers</p>
+                    <p>Numy numy numy</p>
+                  </div>
+                {% for value in spes_propositions2 %}
+                      <div class="col-lg-4 text-center order-1 order-lg-2">
+                        <img src="media/{{ value.photo }}" alt="" class="img-fluid">
+                      </div>
+                {% endfor %}
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row">
+                {% for value in spes_propositions3 %}
+                      <div class="col-lg-8 details order-2 order-lg-1">
+                        <h3>{{ value.description }}</h3>
+                {% endfor %}
+                    <p class="fst-italic">You sole and stomach will be happy</p>
+                    <p>It's paradise</p>
+                  </div>
+                    {% for value in spes_propositions3 %}
+                              <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src="media/{{ value.photo }}" alt="" class="img-fluid">
+                              </div>
+                    {% endfor %}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      </div>
+</section>
+<!-- End Specials Section -->

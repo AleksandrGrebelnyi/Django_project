@@ -1,0 +1,106 @@
+<!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Ваше <span>событие</span> в нашем Restaurant</h2>
+        </div>
+
+        <div class="events-slider swiper">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                {% for value in event %}
+                        <div class="col-lg-6">
+                          <img src="media/{{ value.photo }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+
+                          <h3>{{ value.name }}</h3>
+                          <div class="price">
+                            <p><span>${{ value.price }}</span></p>
+
+                          </div>
+                    {% endfor %}
+              {% for value in event %}
+                      <p class="fst-italic">
+                          {{ value.description }}
+                      </p>
+              {% endfor %}
+                  <ul><br>
+                    <li><i class="bi bi-check-circle"></i> Вкусно </li>
+                    <li><i class="bi bi-check-circle"></i> Весело </li>
+                    <li><i class="bi bi-check-circle"></i> Много фоток </li>
+                  </ul>
+                  <p>
+                    Even celebrities haven't such amazing parties
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                  {% for value in event2 %}
+                        <div class="col-lg-6">
+                          <img src="media/{{ value.photo }}" class="img-fluid" alt="" width="300px" height="300px">
+                        </div>
+                        <div class="col-lg-6 pt-4 pt-lg-0 content">
+                          <h3>{{ value.name }}</h3>
+                          <div class="price">
+                            <p><span>${{ value.price }}</span></p>
+                          </div>
+                    {% endfor %}
+              {% for value in event2 %}
+                      <p class="fst-italic">
+                          {{ value.descriptio }}
+                      </p>
+              {% endfor %}
+                  <ul><br>
+                    <li><i class="bi bi-check-circle"></i> Стильно</li>
+                    <li><i class="bi bi-check-circle"></i> Вкусно</li>
+                    <li><i class="bi bi-check-circle"></i> Разнообразно</li>
+                  </ul>
+                  <p>
+                    Even celebrities dreams about such celebrations
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="row event-item">
+                  {% for value in event3 %}
+                            <div class="col-lg-6">
+                              <img src="media/{{ value.photo }}" class="img-fluid" alt="" width="500px">
+                            </div>
+                            <div class="col-lg-6 pt-4 pt-lg-0 content">
+                              <h3>{{ value.name }}</h3>
+                              <div class="price">
+                                <p><span>${{ value.price }}</span></p>
+                              </div>
+                  {% endfor %}
+              {% for value in event3 %}
+                      <p class="fst-italic">
+                          {{ value.description }}
+                      </p>
+              {% endfor %}
+                  <ul><br>
+                    <li><i class="bi bi-check-circle"></i> То, что принесет радость</li>
+                    <li><i class="bi bi-check-circle"></i> Все самое вкусное</li>
+                    <li><i class="bi bi-check-circle"></i> Незабываемо</li>
+                  </ul>
+                  <p>
+                    It will be one of the best day in your life
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Events Section -->
