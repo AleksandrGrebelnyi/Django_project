@@ -9,8 +9,13 @@
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="menu-flters">
+            <li data-filter="*" class="filter-active">Все категории меню</li>
                 {% for categories in categories %}
-                    <li data-filter=".filter-{{ categories.name }}">{{ categories.name }}</li>
+                    {% if forloop.first %}
+                        <li data-filter=".filter-cat{{ categories.pk }}">{{ categories.name }}</li>
+                    {% else %}
+                        <li data-filter=".filter-cat{{ categories.pk }}">{{ categories.name }}</li>
+                    {% endif %}
                 {% endfor %}
             </ul>
           </div>
@@ -18,19 +23,16 @@
 
         <div class="row menu-container">
             {% for dish in dishes %}
-
-          <div class="col-lg-6 menu-item filter-{{ dish.category.name }}">
-            <div class="menu-content">
-              <a href="#">{{ dish.name }}</a><span>$ {{ dish.price }} </span>
-            </div>
-
-              <img src="media/{{ dish.photo }}" width="20%">
-
-            <div class="menu-ingredients">
-              {{ dish.ingredients }}
-            </div>
-          </div>
-            {% endfor %}
+                  <div class="col-lg-6 menu-item filter-cat{{ dish.category.pk }}">
+                    <div class="menu-content">
+                    <a href="#">{{ dish.name }}</a><span>$ {{ dish.price }} </span>
+                     </div>
+                        <img src="media/{{ dish.photo }}" width="20%">
+                      <div class="menu-ingredients">
+           {{ dish.ingredients }}
+                        </div>
+                     </div>
+           {% endfor %}
         </div>
       </div>
     </section>

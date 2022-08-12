@@ -3,16 +3,17 @@
       <h2>Some photos from <span>Our Restaurant</span></h2>
       <p>Become a part of our happy moments<br>Стань частью наших счастливых моментов</p>
     </div>
-  <span class="container-fluid">
+
+  <div class="container-fluid">
       {% for image in gallery %}
                 <span class="gallery-item">
-                  <a href="assets/img/gallery/gallery-1.jpg" class="gallery-lightbox">
-                    <img src="media/{{ image.photo }}" alt="" class="img-fluid" width="200px">
+                  <a href="{{ image.photo.url }}" class="gallery-lightbox">
+                    <img src="{{ image.photo.url }}" alt="" class="img-fluid" width="300px">
                   </a>
                 </span>
       {% endfor %}
     </div>
 
-  </span>
+  </div>
 </section>
 <!-- End Gallery Section -->
