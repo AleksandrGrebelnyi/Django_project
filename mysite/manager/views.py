@@ -1,35 +1,13 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
+from base.models import UserReservation
 
-def manager(requesr):
-    return HttpResponse(f'Manager')
+# Create your views here
+def reservations_list(request):
+    reservation = UserReservation.objects.filter(is_processed=False)
+    return render(request, 'reservations_list.html', context={
+        'reservation': reservation,
+    })
 
-def manager_general(request):
-    return HttpResponse('Base page of MANAGER')
-
-def manager_menu(request):
-    return HttpResponse('Manager access to MENU')
-
-def add_dish(request):
-    return HttpResponse('Manager access to ADD-DISH-TO-MENU')
-
-def delete_dish(request):
-    return HttpResponse('Manager access to DELETE-DISH')
-
-def manager_events(request):
-    return HttpResponse('Manager access to manager_events')
-
-def add_event(request):
-    return HttpResponse('Manager access to ADD-EVENTS')
-
-def addrecord(request):
-    return HttpResponse('Manager access to ADD-RECORD')
-
-def delete_event(request, event_name):
-    return HttpResponse('Manager access to DELETE_EVENT')
-
-def book_a_table(request):
-    return HttpResponse('Manager access to BOOK TABLE')
-
-def cancel_book_table(request):
-    return HttpResponse('Manager access to CANCEL-BOOK')
-
+def update_reservation(request, pk):
+    UserReservation.objects.filter(pk=pk).update(is_processed=True)
+    return redirect('manager:reservations_list')
