@@ -1,6 +1,8 @@
 from django.db import models
 import uuid  # задаем новое уникальное имя файлу
 import os
+from django.core.validators import RegexValidator
+
 
 class Categories(models.Model):
     slug = models.SlugField(max_length=200, db_index=True)
@@ -101,3 +103,23 @@ class Specials(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class UserReservation(models.Model):
+    mobile_re = RegexValidator(regex=r'^((\d{3}[- .]?){2}\d{4}$)', message='Phone in format xxx xxx xxxx')
+    email_re = RegexValidator(regex=r'(^[A-Za-z0-9]+[\w_]+.[\w_]+@[0-9A-Za-z]+\.[a-z]{2,7}$)',
+                              message='Check your email or put another')
+    name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50, validators=[email_re])
+    phone = models.CharField(max_length=15, validators=[mobile_re])
+    persons = models.PositiveIntegerField()
+    message = models.TextField(max_length=200, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    is_processed = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('-date', '-is_processed')
+
+    def __str__(self):
+        return f'{self.name}, {self.phone}, {self.email}: {self.message}'
+
