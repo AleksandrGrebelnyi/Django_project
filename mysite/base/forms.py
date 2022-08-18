@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserReservation
+from django.core.validators import RegexValidator
 
 
 class UserReservationForm(forms.ModelForm):
@@ -22,6 +23,7 @@ class UserReservationForm(forms.ModelForm):
         'id': 'email',
         'placeholder': 'Ваш Email (имэйл)',
         'data-rule': 'email',
+        'pattern': '(^[A-Za-z0-9]+[\w_]+.[\w_]+@[0-9A-Za-z]+\.[a-z]{2,7}$)',
         'data-msg': 'Please enter a valid email',
 
     }))
@@ -33,7 +35,9 @@ class UserReservationForm(forms.ModelForm):
         'id': 'phone',
         'placeholder': 'Ваш телефон',
         'data-rule': 'minlen:4',
-        'data-msg': 'Please enter at least 4 chars',
+        'pattern': '^((\d{3}[- .]?){2}\d{4}$)',
+        'data-msg': 'Please enter in format xxx xxx xxxx',
+
     }))
 
     persons = forms.IntegerField(widget=forms.NumberInput(attrs={
@@ -57,4 +61,4 @@ class UserReservationForm(forms.ModelForm):
 
     class Meta:
         model = UserReservation
-        fields = ('name', 'email', 'phone', 'persons', 'message', )
+        fields = ('name', 'email', 'phone', 'persons', 'message',)
