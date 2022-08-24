@@ -1,6 +1,7 @@
 from django import forms
 from .models import UserReservation
 from django.core.validators import RegexValidator
+from base import models
 
 
 class UserReservationForm(forms.ModelForm):
@@ -62,3 +63,46 @@ class UserReservationForm(forms.ModelForm):
     class Meta:
         model = UserReservation
         fields = ('name', 'email', 'phone', 'persons', 'message',)
+
+
+class Contact(forms.ModelForm):
+    name = forms.CharField(
+        max_length=50,
+        widget=forms.TextInput(attrs={
+            'type': 'text',
+            'name': 'name',
+            'class': 'form-control',
+            'id': 'name',
+            'placeholder': 'Ваше имя',
+            'required': 'required',
+        }))
+
+    email = forms.CharField(max_length=50, widget=forms.TextInput(attrs={
+        'type': 'email',
+        'class': 'form-control',
+        'name': 'email',
+        'id': 'email',
+        'placeholder': "Ваш Email",
+        'required': 'required',
+    }))
+
+    subject = forms.CharField(max_length=70, widget=forms.TextInput(attrs={
+        'type': 'text',
+        'class': 'form-control',
+        'name': 'subject',
+        'id': 'subject',
+        'placeholder': 'Subject',
+        'required': 'required',
+    }))
+
+    text = forms.CharField(max_length=500, required=False, widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'name': 'message',
+        'rows': '5',
+        'placeholder': 'Ваше сообщение',
+        'required': 'required',
+    }))
+
+    class Meta:
+        model = models.Contact
+        fields = ('name', 'email', 'subject', 'text',)

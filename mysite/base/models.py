@@ -123,3 +123,16 @@ class UserReservation(models.Model):
     def __str__(self):
         return f'{self.name}, {self.phone}, {self.email}: {self.message}'
 
+
+class Contact(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    subject = models.CharField(max_length=100)
+    text = models.TextField(max_length=500)
+    is_processed = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ('-is_processed',)
+
+    def __str__(self):
+        return f'{self.name}.{self.text[:30]}'

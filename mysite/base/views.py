@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
-from .models import Categories, Dish, About, Specials, WhyUs, Events, Gallery, UserReservation
-from .forms import UserReservationForm
+from .models import Categories, Dish, About, Specials, WhyUs, Events, Gallery, UserReservation, Contact
+from .forms import UserReservationForm, Contact
 
 # Create your views here.
 
@@ -10,6 +10,10 @@ def base(request):
         reservation = UserReservationForm(request.POST)
         if reservation.is_valid():
             reservation.save()
+            return redirect('/')
+        contact = Contact(request.POST)
+        if contact.is_valid():
+            contact.save()
             return redirect('/')
 
     categories = Categories.objects.filter(is_visible=True)
@@ -25,6 +29,7 @@ def base(request):
     event3 = Events.objects.all()[2:3]
     gallery = Gallery.objects.all()
     reservation = UserReservationForm()
+    contact = Contact()
 
     data = {
         'categories': categories,
@@ -40,6 +45,7 @@ def base(request):
         'event3': event3,
         'gallery': gallery,
         'reservation_form': reservation,
+        'contact': contact,
     }
 
     return render(request, 'base.html', context=data)
